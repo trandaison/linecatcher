@@ -1,0 +1,34 @@
+<div class="mx-auto w-full lg:w-2/3 min-h-screen px-4">
+  <div class="flex flex-col h-screen">
+    <div class="my-4">
+      <label class="text-gray-700">
+        <span class="mr-2">Webhook URL</span>
+        <input type="text" class="w-full px-4 py-2 rounded-lg border-2 focus:border-blue-300 focus:outline-none" readonly value="<%= request.url %>">
+      </label>
+      <a id="webhookUrl" href="<%= request.url %>" class="hidden"></a>
+    </div>
+    <div>
+      <div id="connectionStatus" class="flex items-center">
+        <div class="rounded-full h-3 w-3 bg-green-400 inline-block"></div>
+        <span class="ml-2">Online</span>
+      </div>
+    </div>
+    <div class="bg-white font-mono text-gray-600 h-full overflow-y-scroll mb-4 flex-1 border-2 rounded-lg">
+      <ul id="messageList" class="text-xs">
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="back-home fixed top-0 left-0 mt-32">
+  <a href="/">
+    <div class="p-3 pl-2 bg-black bg-opacity-25 rounded-r text-center border-r-4 border-blue-600">
+      <img src="/favicon.png" alt="HOME" class="w-10 h-10 mx-auto">
+      <span class="text-white text-sm">HOME</span>
+    </div>
+  </a>
+</div>
+
+<%= content_for :page_scripts do %>
+  <%= javascript_pack_tag 'channel', 'data-turbolinks-track': 'reload' %>
+<% end %>
